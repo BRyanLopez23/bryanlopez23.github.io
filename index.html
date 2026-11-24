@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bryan López León — Ingeniería en Software & Desarrollo Web Full Stack</title>
+    <meta name="description" content="Portafolio profesional de Bryan Francisco López León. Desarrollador Web Full Stack Jr. & Ingeniería en Software (Python, Django, JavaScript, Vue.js, SQL, APIs REST).">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap');
+
+        :root {
+            --bg-dark: #060913;
+            --bg-card: rgba(15, 23, 42, 0.72);
+            --border-card: rgba(148, 163, 184, 0.14);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --cyan: #22d3ee;
+            --blue: #38bdf8;
+            --purple: #818cf8;
+            --violet: #a855f7;
+            --green: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Fondo de cuadrícula técnica + luces de neón difuminadas */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(to right, rgba(56, 189, 248, 0.045) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(56, 189, 248, 0.045) 1px, transparent 1px);
+            background-size: 48px 48px;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .glow-orb-1 {
+            position: fixed;
+            top: -120px;
+            left: 18%;
+            width: 520px;
+            height: 520px;
+            background: radial-gradient(circle, rgba(129, 140, 248, 0.16) 0%, rgba(34, 211, 238, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .glow-orb-2 {
+            position: fixed;
+            top: 25%;
+            right: 10%;
+            width: 480px;
+            height: 480px;
+            background: radial-gradient(circle, rgba(34, 211, 238, 0.15) 0%, rgba(168, 85, 247, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* NAVBAR SUPERIOR GLASSMORPHISM */
+        .navbar-wrap {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(6, 9, 19, 0.78);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .navbar {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--cyan);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lang-switch {
+            display: inline-flex;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-card);
+            border-radius: 20px;
+            padding: 2px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: rgba(56, 189, 248, 0.2);
+            color: #fff;
+        }
+
+        .icon-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .icon-link:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.06);
+            border-color: var(--border-card);
+        }
+
+        .btn-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border-card);
+            background: rgba(255, 255, 255, 0.04);
+            color: #fff;
+        }
+
+        .btn-pill:hover {
+            transform: translateY(-2px);
+            border-color: rgba(56, 189, 248, 0.5);
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        .btn-gradient {
+            background: linear-gradient(90deg, var(--cyan) 0%, var(--purple) 55%, var(--violet) 100%);
+            border: none;
+            color: #060913;
+            font-weight: 800;
+            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.28);
+        }
+
+        .btn-gradient:hover {
+            box-shadow: 0 6px 26px rgba(129, 140, 248, 0.45);
+            color: #060913;
+        }
+
+        /* CONTENEDOR GENERAL */
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* SECCIÓN HERO */
+        .hero {
+            min-height: calc(100vh - 70px);
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            align-items: center;
+            gap: 48px;
+            padding: 64px 0;
+        }
+
+        .hero-kicker {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--cyan);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-kicker::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--cyan);
+            box-shadow: 0 0 12px var(--cyan);
+        }
+
+        .hero-title {
+            font-size: clamp(38px, 5.2vw, 62px);
+            font-weight: 800;
+            line-height: 1.08;
+            letter-spacing: -1.5px;
+            background: linear-gradient(92deg, #22d3ee 0%, #60a5fa 45%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 18px;
+        }
+
+        .hero-role {
+            font-size: clamp(16px, 2vw, 20px);
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+
+        .hero-desc {
+            font-size: 15.5px;
+            color: var(--text-muted);
+            max-width: 580px;
+            margin-bottom: 28px;
+        }
+
+        .hero-desc strong {
+            color: #e2e8f0;
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .hero-cta .btn-pill {
+            padding: 12px 24px;
+            font-size: 14px;
+        }
+
+        .hero-socials {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* FOTO CIRCULAR CON HALO NEÓN */
+        .hero-photo-col {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .avatar-glow-wrap {
+            position: relative;
+            width: 310px;
+            height: 310px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .avatar-glow-wrap::before {
+            content: "";
+            position: absolute;
+            inset: -14px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(34, 211, 238, 0.42) 0%, rgba(129, 140, 248, 0.22) 50%, transparent 72%);
+            filter: blur(18px);
+            z-index: 0;
+        }
+
+        .avatar-img {
+            width: 290px;
+            height: 290px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+            border: 3px solid rgba(56, 189, 248, 0.45);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.65);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* SECCIONES DEL CV */
+        section.section-block {
+            padding: 72px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .section-header {
+            margin-bottom: 36px;
+        }
+
+        .section-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        /* TARJETAS DE PROYECTOS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 26px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.25s ease, border-color 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(56, 189, 248, 0.45);
+        }
+
+        .card-badge {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--cyan);
+            background: rgba(34, 211, 238, 0.1);
+            border: 1px solid rgba(34, 211, 238, 0.25);
+            padding: 3px 10px;
+            border-radius: 999px;
+            margin-bottom: 14px;
+        }
+
+        .card h3 {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+
+        .tech-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-bottom: 20px;
+        }
+
+        .chip {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+            font-size: 11.5px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .chip.core {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: rgba(56, 189, 248, 0.35);
+            color: #bae6fd;
+        }
+
+        .card-links {
+            display: flex;
+            gap: 12px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .card-links a {
+            color: var(--cyan);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .card-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* HABILIDADES */
+        .skills-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        /* FORMACIÓN Y COMPETENCIAS */
+        .edu-timeline {
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 24px;
+        }
+
+        .edu-item {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--cyan);
+            margin-bottom: 22px;
+        }
+
+        .edu-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .edu-year {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--cyan);
+            font-weight: 600;
+        }
+
+        .edu-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            margin: 3px 0;
+        }
+
+        .edu-inst {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        /* BOTÓN FLOTANTE DE WHATSAPP */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 26px;
+            right: 26px;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: #25d366;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+            z-index: 90;
+            transition: transform 0.2s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+        }
+
+        footer {
+            text-align: center;
+            padding: 36px 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        @media (max-width: 880px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 40px 0;
+            }
+            .hero-kicker, .hero-cta, .hero-socials {
+                justify-content: center;
+            }
+            .hero-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-photo-col {
+                order: -1;
+            }
+            .avatar-glow-wrap {
+                width: 230px;
+                height: 230px;
+            }
+            .avatar-img {
+                width: 215px;
+                height: 215px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .edu-timeline {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow-orb-1"></div>
+    <div class="glow-orb-2"></div>
+
+    <!-- NAVBAR SUPERIOR -->
+    <div class="navbar-wrap">
+        <nav class="navbar">
+            <a href="#" class="logo">BL<span>.</span></a>
+
+            <ul class="nav-links">
+                <li><a href="#sobre-mi" data-es="Sobre mí" data-en="About">Sobre mí</a></li>
+                <li><a href="#proyectos" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
+                <li><a href="#habilidades" data-es="Habilidades" data-en="Skills">Habilidades</a></li>
+                <li><a href="#formacion" data-es="Formación" data-en="Education">Formación</a></li>
+                <li><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div class="lang-switch">
+                    <button class="lang-btn active" id="btnEs" onclick="setLang('es')">ES</button>
+                    <button class="lang-btn" id="btnEn" onclick="setLang('en')">EN</button>
+                </div>
+                <a href="https://github.com/BRyanLopez23" target="_blank" class="icon-link" title="GitHub">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+                <a href="CV_Bryan_Lopez_Leon.pdf" download class="btn-pill">
+                    📄 <span>CV</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <!-- HERO SECTION -->
+        <section class="hero" id="sobre-mi">
+            <div>
+                <div class="hero-kicker" data-es="DESARROLLO WEB FULL STACK • INGENIERÍA EN SOFTWARE" data-en="FULL STACK WEB DEVELOPMENT • SOFTWARE ENGINEERING">
+                    DESARROLLO WEB FULL STACK • INGENIERÍA EN SOFTWARE
+                </div>
+                <h1 class="hero-title">
+                    Bryan Francisco<br>López León
+                </h1>
+                <div class="hero-role" data-es="Desarrollador Web Full Stack Jr. | Estudiante de Ingeniería en Software (8vo Semestre)" data-en="Full Stack Web Developer Jr. | Software Engineering Student (8th Semester)">
+                    Desarrollador Web Full Stack Jr. | Estudiante de Ingeniería en Software (8vo Semestre)
+                </div>
+                <p class="hero-desc" data-es="Construyo aplicaciones web escalables de punta a punta: desde el diseño de bases de datos relacionales en <strong>SQL (MySQL)</strong> y <strong>APIs REST en Python (Django)</strong> hasta interfaces interactivas y responsivas con <strong>JavaScript (Vue.js 3), HTML5 y CSS3</strong>, aplicando <strong>POO</strong>, estructuras de datos y control de versiones con <strong>Git</strong>." data-en="I build end-to-end scalable web applications: from relational database design in <strong>SQL (MySQL)</strong> and <strong>REST APIs in Python (Django)</strong> to interactive responsive interfaces with <strong>JavaScript (Vue.js 3), HTML5 & CSS3</strong>, applying <strong>OOP</strong>, data structures, and <strong>Git</strong> version control.">
+                    Construyo aplicaciones web escalables de punta a punta: desde el diseño de bases de datos relacionales en <strong>SQL (MySQL)</strong> y <strong>APIs REST en Python (Django)</strong> hasta interfaces interactivas y responsivas con <strong>JavaScript (Vue.js 3), HTML5 y CSS3</strong>, aplicando <strong>POO</strong>, estructuras de datos y control de versiones con <strong>Git</strong>.
+                </p>
+
+                <div class="hero-cta">
+                    <a href="#proyectos" class="btn-pill btn-gradient" data-es="Ver proyectos" data-en="View Projects">Ver proyectos</a>
+                    <a href="CV_Bryan_Lopez_Leon.pdf" download class="btn-pill" data-es="📄 Descargar CV (Ejecutivo)" data-en="📄 Download CV (Executive)">📄 Descargar CV (Ejecutivo)</a>
+                    <a href="CV_Bryan_Lopez_Leon_ATS.pdf" download class="btn-pill" data-es="📋 CV Formato ATS" data-en="📋 ATS Format CV">📋 CV Formato ATS</a>
+                </div>
+
+                <div class="hero-socials">
+                    <a href="https://github.com/BRyanLopez23" target="_blank" class="icon-link" title="GitHub">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    </a>
+                    <a href="mailto:bryanfranciscoll08@outlook.com" class="icon-link" title="Email">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </a>
+                    <span style="font-size:13px;color:var(--text-muted);" data-es="📍 Guayaquil, Ecuador (Disponible Remoto / Híbrido)" data-en="📍 Guayaquil, Ecuador (Open to Remote / Hybrid)">📍 Guayaquil, Ecuador (Disponible Remoto / Híbrido)</span>
+                </div>
+            </div>
+
+            <div class="hero-photo-col">
+                <div class="avatar-glow-wrap">
+                    <img src="foto_perfil.jpg" alt="Bryan Francisco López León" class="avatar-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- PROYECTOS DESTACADOS -->
+        <section class="section-block" id="proyectos">
+            <div class="section-header">
+                <span class="section-tag" data-es="PORTAFOLIO & REPOSITORIOS" data-en="PORTFOLIO & REPOSITORIES">PORTAFOLIO & REPOSITORIOS</span>
+                <h2 class="section-title" data-es="Proyectos de Desarrollo" data-en="Featured Software Projects">Proyectos de Desarrollo</h2>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Proyecto 1 -->
+                <article class="card">
+                    <div>
+                        <span class="card-badge">Full Stack • REST API • ERP</span>
+                        <h3>NexStock ERP — Cloud Inventory System</h3>
+                        <p data-es="Arquitectura cliente-servidor en Python (Django) exponiendo endpoints API REST / JSON para operaciones CRUD, filtrado dinámico, búsqueda binaria O(log n), autenticación de usuarios y métricas KPI en tiempo real con interfaz SPA en Vue.js 3 y MySQL." data-en="Client-server architecture in Python (Django) exposing REST / JSON endpoints for CRUD operations, dynamic filtering, O(log n) binary search, user authentication, and real-time KPI metrics with a Vue.js 3 SPA and MySQL.">
+                            Arquitectura cliente-servidor en Python (Django) exponiendo endpoints API REST / JSON para operaciones CRUD, filtrado dinámico, búsqueda binaria O(log n), autenticación de usuarios y métricas KPI en tiempo real con interfaz SPA en Vue.js 3 y MySQL.
+                        </p>
+                        <div class="tech-chips">
+                            <span class="chip core">Python</span>
+                            <span class="chip core">Django</span>
+                            <span class="chip core">Vue.js 3</span>
+                            <span class="chip core">MySQL / SQL</span>
+                            <span class="chip">API REST / JSON</span>
+                            <span class="chip">POO</span>
+                        </div>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://github.com/BRyanLopez23/nexstock-erp-api" target="_blank" data-es="💻 Ver Código en GitHub →" data-en="💻 View Code on GitHub →">💻 Ver Código en GitHub →</a>
+                    </div>
+                </article>
+
+                <!-- Proyecto 2 -->
+                <article class="card">
+                    <div>
+                        <span class="card-badge">Frontend SaaS • ES6+ OOP</span>
+                        <h3>TaskFlow Pro — Agile Kanban Board</h3>
+                        <p data-es="Aplicación web interactiva estilo SaaS para gestión ágil de proyectos (Scrum/Kanban) construida con arquitectura modular orientada a objetos en JavaScript ES6+, persistencia y exportación JSON, filtrado reactivo y diseño responsivo." data-en="Interactive SaaS web app for Agile project management (Scrum/Kanban) built with modular Object-Oriented JavaScript ES6+, JSON persistence/export, reactive filtering, and responsive UI.">
+                            Aplicación web interactiva estilo SaaS para gestión ágil de proyectos (Scrum/Kanban) construida con arquitectura modular orientada a objetos en JavaScript ES6+, persistencia y exportación JSON, filtrado reactivo y diseño responsivo.
+                        </p>
+                        <div class="tech-chips">
+                            <span class="chip core">JavaScript ES6+</span>
+                            <span class="chip core">POO</span>
+                            <span class="chip core">HTML5 / CSS3</span>
+                            <span class="chip">JSON Export</span>
+                            <span class="chip">Diseño Responsivo</span>
+                        </div>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://bryanlopez23.github.io/taskflow-kanban-app/" target="_blank" data-es="🚀 Abrir Demo Live →" data-en="🚀 Open Live Demo →">🚀 Abrir Demo Live →</a>
+                        <a href="https://github.com/BRyanLopez23/taskflow-kanban-app" target="_blank">💻 GitHub</a>
+                    </div>
+                </article>
+
+                <!-- Proyecto 3 -->
+                <article class="card">
+                    <div>
+                        <span class="card-badge">Algorithms • Data Structures • SQL</span>
+                        <h3>Python &amp; SQL Algorithms Lab</h3>
+                        <p data-es="Implementación modular de estructuras de datos (Listas Enlazadas, Pilas LIFO, Árboles Binarios BST O(log n)), algoritmos QuickSort/MergeSort O(n log n), pruebas unitarias (unittest) y consultas SQL analíticas (Window Functions, CTEs, JOINs)." data-en="Modular implementation of data structures (Linked Lists, LIFO Stacks, Binary Search Trees O(log n)), QuickSort/MergeSort O(n log n), unit tests, and analytical SQL queries (Window Functions, CTEs, JOINs).">
+                            Implementación modular de estructuras de datos (Listas Enlazadas, Pilas LIFO, Árboles Binarios BST O(log n)), algoritmos QuickSort/MergeSort O(n log n), pruebas unitarias (unittest) y consultas SQL analíticas (Window Functions, CTEs, JOINs).
+                        </p>
+                        <div class="tech-chips">
+                            <span class="chip core">Python</span>
+                            <span class="chip core">SQL Avanzado</span>
+                            <span class="chip core">Estructuras de Datos</span>
+                            <span class="chip">Unit Testing</span>
+                            <span class="chip">Microservicios / DAWA</span>
+                        </div>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://github.com/BRyanLopez23/python-sql-algorithms-lab" target="_blank" data-es="💻 Ver Laboratorio en GitHub →" data-en="💻 View Lab on GitHub →">💻 Ver Laboratorio en GitHub →</a>
+                        <a href="https://github.com/JeremiassDev18/Proyecto_DAWA_Microservicios" target="_blank">🔗 DAWA</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- HABILIDADES TÉCNICAS -->
+        <section class="section-block" id="habilidades">
+            <div class="section-header">
+                <span class="section-tag" data-es="STACK TECNOLÓGICO" data-en="TECH STACK">STACK TECNOLÓGICO</span>
+                <h2 class="section-title" data-es="Habilidades Técnicas" data-en="Technical Skills">Habilidades Técnicas</h2>
+            </div>
+
+            <div class="skills-columns">
+                <div class="card">
+                    <h3 data-es="Lenguajes &amp; Backend" data-en="Languages &amp; Backend">Lenguajes &amp; Backend</h3>
+                    <div class="tech-chips" style="margin-top:10px;margin-bottom:0;">
+                        <span class="chip core">Python</span>
+                        <span class="chip core">JavaScript (ES6+)</span>
+                        <span class="chip core">Django</span>
+                        <span class="chip">Flask</span>
+                        <span class="chip">PHP</span>
+                        <span class="chip">Java</span>
+                        <span class="chip">C#</span>
+                        <span class="chip">C++</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 data-es="Frontend &amp; Arquitectura Web" data-en="Frontend &amp; Web Architecture">Frontend &amp; Arquitectura Web</h3>
+                    <div class="tech-chips" style="margin-top:10px;margin-bottom:0;">
+                        <span class="chip core">HTML5</span>
+                        <span class="chip core">CSS3</span>
+                        <span class="chip core">Vue.js 3</span>
+                        <span class="chip core">APIs REST / JSON</span>
+                        <span class="chip">Diseño Responsivo</span>
+                        <span class="chip">Apps Web y Móviles</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 data-es="Bases de Datos &amp; Entorno" data-en="Databases &amp; Environment">Bases de Datos &amp; Entorno</h3>
+                    <div class="tech-chips" style="margin-top:10px;margin-bottom:0;">
+                        <span class="chip core">SQL</span>
+                        <span class="chip core">MySQL</span>
+                        <span class="chip core">Git &amp; GitHub</span>
+                        <span class="chip">Linux (Terminal / SO)</span>
+                        <span class="chip">Modelado Relacional</span>
+                        <span class="chip">Consultas JOIN / CTE</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 data-es="Ingeniería &amp; Calidad" data-en="Engineering &amp; Quality">Ingeniería &amp; Calidad</h3>
+                    <div class="tech-chips" style="margin-top:10px;margin-bottom:0;">
+                        <span class="chip core">POO</span>
+                        <span class="chip core">Estructuras de Datos</span>
+                        <span class="chip core">Debugging</span>
+                        <span class="chip">Autenticación y Seguridad</span>
+                        <span class="chip">Scrum</span>
+                        <span class="chip">Arquitectura de Software</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORMACIÓN ACADÉMICA Y COMPETENCIAS -->
+        <section class="section-block" id="formacion">
+            <div class="section-header">
+                <span class="section-tag" data-es="TRAYECTORIA ACADÉMICA" data-en="ACADEMIC BACKGROUND">TRAYECTORIA ACADÉMICA</span>
+                <h2 class="section-title" data-es="Formación e Idiomas" data-en="Education & Languages">Formación e Idiomas</h2>
+            </div>
+
+            <div class="edu-timeline">
+                <div class="card">
+                    <div class="edu-item">
+                        <span class="edu-year" data-es="2021 – Actualidad (8vo Semestre)" data-en="2021 – Present (8th Semester)">2021 – Actualidad (8vo Semestre)</span>
+                        <div class="edu-title" data-es="Ingeniería en Software" data-en="Software Engineering">Ingeniería en Software</div>
+                        <div class="edu-inst" data-es="Universidad de Guayaquil • Facultad de Ciencias Matemáticas y Físicas" data-en="University of Guayaquil • Faculty of Mathematical & Physical Sciences">Universidad de Guayaquil • Facultad de Ciencias Matemáticas y Físicas</div>
+                        <p style="margin-bottom:12px;" data-es="7 semestres aprobados íntegramente + Componente de Idiomas (Inglés) 100% culminado. Cursando 8vo semestre (<em>Desarrollo de Aplicaciones Móviles, Seguridad Informática y Calidad del Software</em>)." data-en="7 semesters fully approved + Language Component (English) 100% completed. Currently in 8th semester (<em>Mobile App Development, Cybersecurity, and Software Quality</em>).">
+                            7 semestres aprobados íntegramente + Componente de Idiomas (Inglés) 100% culminado. Cursando 8vo semestre (<em>Desarrollo de Aplicaciones Móviles, Seguridad Informática y Calidad del Software</em>).
+                        </p>
+                        <div class="tech-chips" style="margin-bottom:0;">
+                            <span class="chip">✓ Desarrollo Web &amp; Web Avanzado</span>
+                            <span class="chip">✓ Base de Datos &amp; BD Avanzado</span>
+                            <span class="chip">✓ Estructura de Datos</span>
+                            <span class="chip">✓ Programación Orientada a Objetos</span>
+                            <span class="chip">✓ Diseño y Arquitectura de Software</span>
+                            <span class="chip">✓ Sistemas Operativos</span>
+                        </div>
+                    </div>
+
+                    <div class="edu-item">
+                        <span class="edu-year">2018 – 2021</span>
+                        <div class="edu-title" data-es="Bachillerato Técnico en Informática" data-en="Technical High School in Computer Science">Bachillerato Técnico en Informática</div>
+                        <div class="edu-inst">Unidad Educativa Fiscal Eloy Alfaro • Guayaquil, Ecuador</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <h3 data-es="🌐 Idiomas" data-en="🌐 Languages">🌐 Idiomas</h3>
+                        <ul style="list-style:none;margin-top:12px;margin-bottom:24px;font-size:14px;color:var(--text-muted);">
+                            <li style="margin-bottom:10px;" data-es="<strong style='color:#fff;'>Español:</strong> Nativo" data-en="<strong style='color:#fff;'>Spanish:</strong> Native"><strong style="color:#fff;">Español:</strong> Nativo</li>
+                            <li>
+                                <span data-es="<strong style='color:#fff;'>Inglés:</strong> Intermedio (Nivel B1)" data-en="<strong style='color:#fff;'>English:</strong> Intermediate (B1 Level)"><strong style="color:#fff;">Inglés:</strong> Intermedio (Nivel B1)</span><br>
+                                <span style="font-size:12.5px;color:var(--cyan);" data-es="✓ Suficiencia académica completada (100%) – Universidad de Guayaquil" data-en="✓ Academic proficiency 100% completed – University of Guayaquil">✓ Suficiencia académica completada (100%) – Universidad de Guayaquil</span>
+                            </li>
+                        </ul>
+
+                        <h3 data-es="🤝 Competencias" data-en="🤝 Core Competencies">🤝 Competencias</h3>
+                        <ul style="list-style:none;margin-top:12px;font-size:14px;color:var(--text-muted);">
+                            <li style="margin-bottom:8px;" data-es="▹ Pensamiento crítico y lógica algorítmica" data-en="▹ Critical thinking & algorithmic logic">▹ Pensamiento crítico y lógica algorítmica</li>
+                            <li style="margin-bottom:8px;" data-es="▹ Resolución de problemas y debugging" data-en="▹ Problem solving & systematic debugging">▹ Resolución de problemas y debugging</li>
+                            <li style="margin-bottom:8px;" data-es="▹ Liderazgo y trabajo en equipo (Scrum)" data-en="▹ Leadership & Agile teamwork (Scrum)">▹ Liderazgo y trabajo en equipo (Scrum)</li>
+                            <li data-es="▹ Comunicación efectiva y adaptabilidad" data-en="▹ Effective communication & adaptability">▹ Comunicación efectiva y adaptabilidad</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section class="section-block" id="contacto">
+            <div class="card" style="text-align:center;padding:42px 24px;">
+                <span class="section-tag" data-es="CONTACTO DIRECTO" data-en="DIRECT CONTACT">CONTACTO DIRECTO</span>
+                <h2 class="section-title" style="margin-bottom:12px;" data-es="¿Hablamos sobre una oportunidad o proyecto?" data-en="Let's talk about an opportunity or project!">¿Hablamos sobre una oportunidad o proyecto?</h2>
+                <p style="max-width:540px;margin:0 auto 24px;" data-es="Disponible para posiciones de <strong>Desarrollador Web Jr.</strong> o <strong>Pasante de Desarrollo de Software</strong> (modalidad remota, híbrida o presencial)." data-en="Available for <strong>Junior Web Developer</strong> or <strong>Software Engineering Intern</strong> roles (remote, hybrid, or on-site).">
+                    Disponible para posiciones de <strong>Desarrollador Web Jr.</strong> o <strong>Pasante de Desarrollo de Software</strong> (modalidad remota, híbrida o presencial).
+                </p>
+                <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:14px;">
+                    <a href="https://wa.me/593994706744" target="_blank" class="btn-pill btn-gradient" data-es="💬 Escribir por WhatsApp (099 470 6744)" data-en="💬 Message on WhatsApp (+593 99 470 6744)">💬 Escribir por WhatsApp (099 470 6744)</a>
+                    <a href="mailto:bryanfranciscoll08@outlook.com" class="btn-pill">✉️ bryanfranciscoll08@outlook.com</a>
+                    <a href="https://github.com/BRyanLopez23" target="_blank" class="btn-pill">💻 GitHub: BRyanLopez23</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2026 Bryan Francisco López León &bull; Desarrollado con HTML5, CSS3 &amp; JavaScript ES6+
+    </footer>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/593994706744" target="_blank" class="whatsapp-float" title="Contactar por WhatsApp">
+        💬
+    </a>
+
+    <script>
+        function setLang(lang) {
+            document.documentElement.lang = lang;
+            document.getElementById('btnEs').classList.toggle('active', lang === 'es');
+            document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+            document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+                el.innerHTML = el.getAttribute('data-' + lang);
+            });
+        }
+    </script>
+</body>
+</html>
